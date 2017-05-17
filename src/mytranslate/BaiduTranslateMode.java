@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 
+
 public class BaiduTranslateMode {
 
     private String result = null;

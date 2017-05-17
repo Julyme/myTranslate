@@ -1,11 +1,10 @@
 package mytranslate.impl;
 
-import com.alibaba.fastjson.JSON;
-import com.baidu.translate.demo.TransApi;
-
 import mytranslate.BaiduTranslate;
 import mytranslate.BaiduTranslateMode;
 import mytranslate.TranslateConf;
+
+import com.baidu.translate.demo.TransApi;
 
 public class BaiduTranslateImpl implements BaiduTranslate {
     

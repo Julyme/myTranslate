@@ -3,7 +3,7 @@ package mytranslate;
 public class TranslateConf {
 
     public static String APP_ID = "";
-    public static final String SECURITY_KEY = "";
+    public static String SECURITY_KEY = "";
     /**
      * 自动检测
      */
