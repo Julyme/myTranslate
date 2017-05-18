@@ -16,9 +16,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.jface.preference.PreferenceStore;
 import org.eclipse.swt.custom.StyledText;
-import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.

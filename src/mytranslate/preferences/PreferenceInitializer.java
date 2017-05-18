@@ -1,9 +1,6 @@
 package mytranslate.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
-import org.eclipse.jface.preference.IPreferenceStore;
-
-import mytranslate.Activator;
 
 /**
  * Class used to initialize default preference values.
