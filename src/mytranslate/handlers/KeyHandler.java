@@ -7,15 +7,17 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 
 import mytranslate.Activator;
-import mytranslate.BaiduTranslateMode;
 import mytranslate.TranslateConf;
-import mytranslate.impl.BaiduTranslateImpl;
+import mytranslate.baidu.BaiduTranslateImpl;
+import mytranslate.baidu.BaiduTranslateMode;
 import mytranslate.views.MyTranslateView;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.swt.custom.StyledText;
 
 /**
@@ -26,28 +28,56 @@ import org.eclipse.swt.custom.StyledText;
  */
 public class KeyHandler extends AbstractHandler {
     private StyledText text;
-    /**
-     * The constructor.
-     */
+    private String translateResult = "";
+    private IPreferenceStore store;
+    
+    
     public KeyHandler() {
     }
 
     /**
-     * the command has been executed, so extract extract the needed information
-     * from the application context.
+     * 使用快捷键时，会执行此方法
      */
     public Object execute(ExecutionEvent event) throws ExecutionException {
-        initKey();
+        if (store == null){
+            store = Activator.getDefault().getPreferenceStore();
+            initKey();
+            store.addPropertyChangeListener(new IPropertyChangeListener() {
+                @Override
+                public void propertyChange(PropertyChangeEvent arg0) {
+                    initKey();
+                }
+            });
+        }
         text = MyTranslateView.resultText;
         text.setText("翻译中...");
-        BaiduTranslateMode mode = new BaiduTranslateImpl().translate(getCopyText(), "auto", "zh");
-        StringBuffer sb = new StringBuffer();
-        sb.append("原文： "+mode.getSrc()).append("\r").append("译文： "+mode.getDst());
-        text.setText(sb.toString());
+        String src = getCopyText();
+        switch (TranslateConf.TRANSLATEPLATFORM) {
+        case "all":
+            translateResult = allTranslate(src);
+            break;
+
+        case "baidu":
+            translateResult = baiduTranslate(src);
+            break;
+           
+        case "youdao":
+            translateResult = youdaoTranslate(src);
+            break;
+            
+        default:
+            break;
+        }
+       
+        text.setText(translateResult);
        
         return null;
     }
 
+    /**
+     * 获取剪切板数据
+     * @return
+     */
     public String getCopyText() {
         // 取得系统剪贴板里可传输的数据构造的Java对象
         Transferable t = Toolkit.getDefaultToolkit().getSystemClipboard()
@@ -69,15 +99,46 @@ public class KeyHandler extends AbstractHandler {
     }
     
     /**
-     * 初始化百度翻译的key
+     * 初始化所需要的key
      */
     public void initKey(){
-        IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-        String id = store.getString("APP_ID");
-        String key = store.getString("SECURITY_KEY");
-        if(id != null && key != null){
-            TranslateConf.APP_ID = id;
-            TranslateConf.SECURITY_KEY = key;
-        }
+        TranslateConf.TRANSLATEPLATFORM = store.getString("TRANSLATE_PLATFORM");
+        TranslateConf.BAIDU_APP_ID = store.getString("APP_ID");
+        TranslateConf.BAIDU_SECURITY_KEY = store.getString("SECURITY_KEY");
+        TranslateConf.YOUDAO_KEY = store.getString("YOUDAO_KEY");
+        TranslateConf.YOUDAO_KEYFROM = store.getString("YOUDAO_KEYFROM");
     }
+    
+    /**
+     * 百度翻译
+     * @param src
+     * @return
+     */
+    public String baiduTranslate(String src){
+        BaiduTranslateMode mode = new BaiduTranslateImpl().translate(src, "auto", "zh");
+        StringBuffer sb = new StringBuffer();
+        sb.append("原文： "+mode.getSrc()).append("\r").append("译文： "+mode.getDst());
+        return sb.toString();
+    }
+
+    /**
+     * 有道翻译
+     * @param src
+     * @return
+     */
+    public String youdaoTranslate(String src){
+        
+        return "有道翻译";
+    }
+    
+    /**
+     * 调用全部翻译平台
+     * @param src
+     * @return
+     */
+    public String allTranslate(String src){
+        
+        return "调用全部翻译平台";
+    }
+    
 }

@@ -1,4 +1,4 @@
-package mytranslate;
+package mytranslate.baidu;
 
 import java.util.List;
 import java.util.Map;

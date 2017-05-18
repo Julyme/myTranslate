@@ -2,8 +2,12 @@ package mytranslate;
 
 public class TranslateConf {
 
-    public static String APP_ID = "";
-    public static String SECURITY_KEY = "";
+    public static String TRANSLATEPLATFORM = "";
+    public static String BAIDU_APP_ID = "";
+    public static String BAIDU_SECURITY_KEY = "";
+    public static String YOUDAO_KEYFROM = "";
+    public static String YOUDAO_KEY = "";
+    
     /**
      * 自动检测
      */

@@ -1,4 +1,4 @@
-package mytranslate;
+package mytranslate.baidu;
 
 public interface BaiduTranslate {
 

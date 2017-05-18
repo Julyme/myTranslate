@@ -1,10 +1,6 @@
-package mytranslate.impl;
+package mytranslate.baidu;
 
-import mytranslate.BaiduTranslate;
-import mytranslate.BaiduTranslateMode;
 import mytranslate.TranslateConf;
-
-import com.baidu.translate.demo.TransApi;
 
 public class BaiduTranslateImpl implements BaiduTranslate {
     
@@ -14,7 +10,7 @@ public class BaiduTranslateImpl implements BaiduTranslate {
     public BaiduTranslateMode translate(String text, String from,
             String to) {
         BaiduTranslateMode mode = null;
-        TransApi api = new TransApi(TranslateConf.APP_ID, TranslateConf.SECURITY_KEY);
+        TransApi api = new TransApi(TranslateConf.BAIDU_APP_ID, TranslateConf.BAIDU_SECURITY_KEY);
         String result = api.getTransResult(text, from, to);
         if(result.contains("dst")){
            mode = new BaiduTranslateMode(result);

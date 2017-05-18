@@ -1,4 +1,4 @@
-package com.baidu.translate.demo;
+package mytranslate.utils;
 
 import java.io.File;
 import java.io.FileInputStream;

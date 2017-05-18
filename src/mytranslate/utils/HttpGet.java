@@ -1,4 +1,4 @@
-package com.baidu.translate.demo;
+package mytranslate.utils;
 
 import java.io.BufferedReader;
 import java.io.Closeable;
@@ -21,7 +21,7 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-class HttpGet {
+public class HttpGet {
     protected static final int SOCKET_TIMEOUT = 10000; // 10S
     protected static final String GET = "GET";
 

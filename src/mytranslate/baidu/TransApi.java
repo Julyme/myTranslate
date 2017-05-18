@@ -1,8 +1,11 @@
-package com.baidu.translate.demo;
+package mytranslate.baidu;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
+import mytranslate.utils.HttpGet;
+
+import mytranslate.utils.MD5;
 
 public class TransApi {
     private static final String TRANS_API_HOST = "http://api.fanyi.baidu.com/api/trans/vip/translate";
