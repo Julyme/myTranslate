@@ -16,6 +16,7 @@
 三、打开翻译窗口
 
 在windows->show view ->other 里找到myTranslate view.点击OK
+
 四、使用快捷键
 
 1、选取要翻译的英文，按Ctrl+C。
