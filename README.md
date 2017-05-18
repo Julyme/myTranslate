@@ -23,5 +23,7 @@
 2、点击myTranslate view的空白处（获取焦点才能触发快捷键），按Ctrl+Shift+C。
 
 翻译结果会显示在myTranslate view里面
+
 PS：目前只支持百度翻译的API，后续会支持有道翻译、google翻译等。
+
 更多详细情况请访问http://www.julyme.com/20170518/87.html
