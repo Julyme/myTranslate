@@ -50,7 +50,7 @@ public class HttpGet {
 
             // 读取服务器的数据
             InputStream is = conn.getInputStream();
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            BufferedReader br = new BufferedReader(new InputStreamReader(is,"UTF-8"));
             StringBuilder builder = new StringBuilder();
             String line = null;
             while ((line = br.readLine()) != null) {

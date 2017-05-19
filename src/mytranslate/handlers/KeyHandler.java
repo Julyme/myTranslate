@@ -5,12 +5,16 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import mytranslate.Activator;
 import mytranslate.TranslateConf;
 import mytranslate.baidu.BaiduTranslateImpl;
-import mytranslate.baidu.BaiduTranslateMode;
+import mytranslate.baidu.BaiduTranslateModel;
 import mytranslate.views.MyTranslateView;
+import mytranslate.youdao.YoudaoTranslate;
+import mytranslate.youdao.YoudaoTranslateImpl;
+import mytranslate.youdao.YoudaoTranslateModel;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -68,7 +72,6 @@ public class KeyHandler extends AbstractHandler {
         default:
             break;
         }
-       
         text.setText(translateResult);
        
         return null;
@@ -115,9 +118,9 @@ public class KeyHandler extends AbstractHandler {
      * @return
      */
     public String baiduTranslate(String src){
-        BaiduTranslateMode mode = new BaiduTranslateImpl().translate(src, "auto", "zh");
+        BaiduTranslateModel mode = new BaiduTranslateImpl().translate(src, TranslateConf.AUTO, TranslateConf.AUTO);
         StringBuffer sb = new StringBuffer();
-        sb.append("原文： "+mode.getSrc()).append("\r").append("译文： "+mode.getDst());
+        sb.append("原文： "+mode.getSrc()).append("译文： "+mode.getDst());
         return sb.toString();
     }
 
@@ -127,8 +130,10 @@ public class KeyHandler extends AbstractHandler {
      * @return
      */
     public String youdaoTranslate(String src){
-        
-        return "有道翻译";
+        YoudaoTranslate translate = new YoudaoTranslateImpl();
+        YoudaoTranslateModel model = new YoudaoTranslateModel();
+        model.initModel(translate.translate(src));
+        return model.printResult();
     }
     
     /**
@@ -137,8 +142,12 @@ public class KeyHandler extends AbstractHandler {
      * @return
      */
     public String allTranslate(String src){
-        
-        return "调用全部翻译平台";
+        StringBuffer sb = new StringBuffer();
+        sb.append("**************百度翻译**************").append("\r");
+        sb.append(baiduTranslate(src)).append("\r\r");
+        sb.append("**************有道翻译**************").append("\r");
+        sb.append(youdaoTranslate(src)).append("\r");
+        return sb.toString();
     }
     
 }

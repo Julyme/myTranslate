@@ -6,7 +6,7 @@ import java.util.Map;
 import com.alibaba.fastjson.JSON;
 
 
-public class BaiduTranslateMode {
+public class BaiduTranslateModel {
 
     private String result = null;
     private String from = null;
@@ -14,11 +14,11 @@ public class BaiduTranslateMode {
     private String src = "";
     private String dst = "";
 
-    public BaiduTranslateMode() {
+    public BaiduTranslateModel() {
         super();
     }
 
-    public BaiduTranslateMode(String result) {
+    public BaiduTranslateModel(String result) {
         super();
         this.result = result;
         init();
