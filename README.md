@@ -11,7 +11,14 @@
 二、配置首页项
 
 打开windows->prefrences->myTranslate prefrences。
-填写百度翻译的app_id和security_key，没有的话可以点此链接注册http://api.fanyi.baidu.com/api/trans/product/index
+
+请选择翻译平台和填写改平台的id和key，如果选择全部，请全部填写key和id。
+
+百度翻译API接口注册链接http://api.fanyi.baidu.com/api/trans/product/index
+
+有道翻译API接口注册链接http://fanyi.youdao.com/openapi?path=data-mode
+
+（PS：以上API接口都是免费申请的）
 
 三、打开翻译窗口
 
@@ -25,6 +32,6 @@
 
 翻译结果会显示在myTranslate view里面
 
-PS：目前只支持百度翻译的API，后续会支持有道翻译、google翻译等。
+PS：目前只支持百度翻译的API，后续会支持google翻译、英文语音等功能。
 
 更多详细情况请访问http://www.julyme.com/20170518/87.html
