@@ -32,6 +32,6 @@
 
 翻译结果会显示在myTranslate view里面
 
-PS：目前只支持百度翻译的API，后续会支持google翻译、英文语音等功能。
+PS：目前支持有道翻译、百度翻译，后续会支持google翻译、英文语音等功能。
 
 更多详细情况请访问http://www.julyme.com/20170518/87.html
