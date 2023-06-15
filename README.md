@@ -1,5 +1,4 @@
 # myTranslate
-<a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu" /></a><br/>
 一款基于eclipse的插件，用于翻译。
 有时候在看源码时会碰到一些生疏的单词，需要借助翻译软件来查看，但是复制来复制去比较麻烦，所以开发了这款插件，可以直接用快捷键在eclipse上翻译。
 
